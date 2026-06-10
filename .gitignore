@@ -1,0 +1,63 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dll
+*.pdb
+*.exe
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]uild/
+[Oo]ut/
+msbuild.log
+*.log
+
+# User Secrets
+appsettings.Development.json
+appsettings.Production.json
+
+# Logs
+Logs/
+*.txt
+
+# Visual Studio
+.vs/
+.vscode/
+*.csproj.user
+
+# Rider
+.idea/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+.cache/
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+wwwroot/uploads/*
+!wwwroot/uploads/.gitkeep
+
+# ⭐ SECURITY: PDFs with sensitive data
+wwwroot/pdfs/*
+!wwwroot/pdfs/.gitkeep
+
+# ⭐ SECURITY: Hassas dosyalar - asla commit edilmemeli
+*.pdf
+Attachments/
+ServiceForms/

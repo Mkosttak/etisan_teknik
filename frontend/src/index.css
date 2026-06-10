@@ -1,0 +1,1793 @@
+/* ========================================
+   TEKNIK SERVIS - MODERN CSS SYSTEM
+======================================== */
+
+/* Tab içerikleri tüm ekranlarda overflow'u engellemesin */
+.ant-tabs-content-holder {
+  overflow: visible !important;
+}
+
+/* CSS Variables - Light Mode (Default) */
+:root {
+  /* Primary Colors - Blue Scheme */
+  --primary-color: #1890ff;
+  --primary-hover: #40a9ff;
+  --primary-gradient: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+  --secondary-gradient: linear-gradient(135deg, #2b3242 0%, #1a1f2e 100%);
+
+  /* Background Colors */
+  --bg-primary: #f8f9fa;
+  /* Slightly lighter gray for modern feel */
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-sidebar: #141414;
+  /* Darker, sleek sidebar */
+  --bg-header: rgba(255, 255, 255, 0.85);
+  /* Transparent for glassmorphism */
+
+  /* Text Colors */
+  --text-primary: #1f1f1f;
+  --text-secondary: #595959;
+  --text-muted: #8c8c8c;
+  --text-inverse: #ffffff;
+
+  /* Border Colors */
+  --border-color: #e6e8eb;
+  --border-light: #f5f5f5;
+
+  /* Modern Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
+  /* Softer, spread out shadow */
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  /* Glassmorphism */
+  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.modern-card {
+  border: none !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.modern-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+  --bg-primary: #0a0e14;
+  --bg-secondary: #131720;
+  --bg-card: #1a1f2e;
+  --bg-sidebar: #0a0e14;
+  --bg-header: #131720;
+
+  --text-primary: #e8ecf1;
+  --text-secondary: #cbd2d9;
+  --text-muted: #8b94a1;
+  --text-inverse: #ffffff;
+
+  --border-color: #2d3441;
+  --border-light: #252a35;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   BASE STYLES
+======================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+  line-height: 1.6;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ========================================
+   CARD ENHANCEMENTS
+======================================== */
+
+.ant-card {
+  background: var(--bg-card) !important;
+  border-color: var(--border-light) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: all var(--transition-normal) !important;
+  /* Kart içindeki yatay scroll'u engellemesin */
+  overflow: visible !important;
+}
+
+.ant-card:hover {
+  box-shadow: var(--shadow-md) !important;
+  transform: translateY(-2px);
+}
+
+.ant-card-head {
+  border-bottom-color: var(--border-light) !important;
+}
+
+/* ========================================
+   TABLE ENHANCEMENTS
+======================================== */
+
+.ant-table {
+  background: var(--bg-card) !important;
+  border-radius: var(--radius-lg) !important;
+  /* Allow horizontal scroll content to be visible */
+  overflow: auto;
+}
+
+.ant-table-thead>tr>th {
+  background: var(--bg-secondary) !important;
+  border-bottom-color: var(--border-light) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+}
+
+/* Dark Mode - Table Headers */
+body.dark-mode .ant-table-thead>tr>th {
+  background: linear-gradient(180deg, rgba(22, 27, 34, 0.95) 0%, rgba(13, 17, 23, 0.95) 100%) !important;
+  border-bottom-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.dark-mode .ant-table-thead>tr>th .anticon {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-table-thead>tr>th .ant-table-column-sorter {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-table-thead>tr>th .ant-table-filter-trigger {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-table-thead>tr>th .ant-table-filter-trigger:hover {
+  color: var(--primary-color) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.ant-table-tbody>tr>td {
+  border-bottom-color: var(--border-light) !important;
+}
+
+.ant-table-tbody>tr:hover>td {
+  background: var(--bg-primary) !important;
+}
+
+/* Smooth scroll for all table containers - All screen sizes */
+.ant-table-wrapper {
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  will-change: scroll-position;
+  /* Ensure last column is visible on mobile */
+  padding-right: 0 !important;
+  margin-right: 0 !important;
+  /* Force scroll to work */
+  position: relative;
+  width: 100%;
+}
+
+.ant-table-body,
+.ant-table-content,
+.ant-table-container,
+.ant-table-scroll {
+  scroll-behavior: smooth !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-x: contain;
+  /* Improve scroll performance */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  overflow-x: auto !important;
+  width: 100%;
+}
+
+/* Mobile Table Scroll - Enhanced */
+@media (max-width: 768px) {
+  .ant-table-wrapper {
+    overflow-x: scroll !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    overscroll-behavior-x: contain;
+    will-change: scroll-position;
+    /* Smooth momentum scrolling */
+    scroll-snap-type: none;
+    /* Ensure full scroll to show last column */
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    /* Force full width scroll */
+    width: 100% !important;
+    max-width: 100% !important;
+    position: relative;
+  }
+
+  .ant-table {
+    min-width: 720px;
+  }
+
+  /* Prevent scroll chaining on mobile */
+  .ant-table-body {
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch !important;
+    overflow-x: auto !important;
+  }
+
+  /* Table container should not block scroll */
+  .ant-table-container {
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+
+  /* Ensure scroll container allows full scroll */
+  .ant-table-scroll {
+    overflow-x: auto !important;
+    width: 100% !important;
+  }
+
+  /* Card içindeki tablolar için */
+  .ant-card .ant-table-wrapper {
+    overflow-x: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Card body'de overflow engelleme */
+  .ant-card-body {
+    overflow-x: visible !important;
+    padding-right: 0 !important;
+  }
+
+  /* Tabs içindeki tablolar için */
+  .ant-tabs-content .ant-table-wrapper {
+    overflow-x: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ant-table-wrapper {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+}
+
+/* ========================================
+   BUTTON ENHANCEMENTS
+======================================== */
+
+.ant-btn {
+  border-radius: var(--radius-md) !important;
+  transition: all var(--transition-fast) !important;
+  font-weight: 500;
+}
+
+.ant-btn-primary {
+  background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%) !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(24, 144, 255, 0.35) !important;
+}
+
+.ant-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.45) !important;
+}
+
+/* ========================================
+   FORM ENHANCEMENTS
+======================================== */
+
+.ant-input,
+.ant-input-password,
+.ant-select-selector,
+.ant-picker {
+  border-radius: var(--radius-md) !important;
+  border-color: var(--border-color) !important;
+  transition: all var(--transition-fast) !important;
+}
+
+.ant-input:focus,
+.ant-input-password:focus,
+.ant-select-focused .ant-select-selector {
+  box-shadow: 0 0 0 3px rgba(24, 144, 255, 0.15) !important;
+}
+
+/* ========================================
+   MODAL ENHANCEMENTS
+======================================== */
+
+.ant-modal-content {
+  border-radius: var(--radius-xl) !important;
+  overflow: hidden;
+}
+
+.ant-modal-header {
+  border-bottom-color: var(--border-light) !important;
+}
+
+/* ========================================
+   MENU & SIDEBAR
+======================================== */
+
+.ant-layout-sider {
+  background: var(--bg-sidebar) !important;
+}
+
+.ant-menu-dark {
+  background: transparent !important;
+}
+
+/* ========================================
+   STATS & DASHBOARD
+======================================== */
+
+.dashboard-stat-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.dashboard-stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+======================================== */
+
+/* Allow horizontal scroll for all tables on narrow layouts */
+.ant-table-content {
+  overflow-x: auto;
+}
+
+@media (max-width: 1200px) {
+
+  .ant-table,
+  .ant-table-content table {
+    min-width: 900px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+
+  .ant-card {
+    border-radius: var(--radius-md) !important;
+  }
+
+  .mobile-padding {
+    padding: 12px !important;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .hide-on-tablet {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   ANIMATIONS
+======================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+/* ========================================
+   LOADING STATE
+======================================== */
+
+.skeleton-loading {
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-primary) 50%, var(--bg-secondary) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Blinking warning icon animation */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.2;
+    transform: scale(1.1);
+  }
+}
+
+.blinking-warning-icon {
+  animation: blink 1s ease-in-out infinite;
+  color: #ff4d4f !important;
+}
+
+/* ========================================
+   GLASSMORPHISM (for special cards)
+======================================== */
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-xl);
+}
+
+body.dark-mode .glass-card {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========================================
+   THEME TOGGLE BUTTON
+======================================== */
+
+.theme-toggle-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+/* ========================================
+   URGENT REQUESTS
+======================================== */
+
+.urgent-row {
+  background-color: #fff1f0 !important;
+}
+
+body.dark-mode .urgent-row {
+  background-color: #2a1215 !important;
+}
+
+.urgent-row:hover {
+  background-color: #ffe7e6 !important;
+}
+
+body.dark-mode .urgent-row:hover {
+  background-color: #3a1a1f !important;
+}
+
+/* Talepler/Formlar özel tablo CSS'i kaldırıldı; Arızalar ile aynı genel tablo stilini kullan */
+
+/* Empty Value Styles */
+.requests-empty-value {
+  color: var(--text-muted) !important;
+}
+
+body.dark-mode .requests-empty-value {
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* ========================================
+   DARK MODE - COMPREHENSIVE FIXES
+======================================== */
+
+/* Input, Select, TextArea - Dark Mode */
+body.dark-mode .ant-input,
+body.dark-mode .ant-input-password .ant-input,
+body.dark-mode .ant-input-number,
+body.dark-mode .ant-picker,
+body.dark-mode .ant-picker-input>input {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-input::placeholder,
+body.dark-mode .ant-input-password .ant-input::placeholder,
+body.dark-mode .ant-picker-input>input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Input Affix Wrapper - Dark Mode (for search inputs) */
+body.dark-mode .ant-input-affix-wrapper {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-input-affix-wrapper .ant-input {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-input-affix-wrapper .ant-input-prefix {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-input-affix-wrapper .ant-input-suffix {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-input-affix-wrapper:hover {
+  border-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-input-affix-wrapper-focused,
+body.dark-mode .ant-input-affix-wrapper:focus-within {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
+}
+
+/* Remove white backgrounds in dark mode */
+body.dark-mode .ant-input-group-wrapper,
+body.dark-mode .ant-input-group {
+  background-color: transparent !important;
+}
+
+/* Table filter dropdown search - Dark Mode */
+body.dark-mode .ant-table-filter-dropdown {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-input {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-input-affix-wrapper {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-input-affix-wrapper .ant-input {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-checkbox-wrapper {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-btn {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-btn-link {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-btn-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Select dropdown search - Dark Mode */
+body.dark-mode .ant-select-dropdown .ant-select-item {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-select-dropdown .ant-select-item-option-selected {
+  background-color: rgba(24, 144, 255, 0.2) !important;
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-select-dropdown .ant-select-item-option-active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .ant-select-dropdown .ant-select-item-option-content {
+  color: var(--text-primary) !important;
+}
+
+/* Cascader dropdown search - Dark Mode */
+body.dark-mode .ant-cascader-picker-dropdown .ant-input {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* DatePicker dropdown search - Dark Mode */
+body.dark-mode .ant-picker-dropdown .ant-picker-panel-container {
+  background-color: var(--bg-card) !important;
+}
+
+/* Ensure no white backgrounds in dark mode - Specific fixes */
+body.dark-mode .ant-select-selection-search-input {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-picker-input input {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-input:hover,
+body.dark-mode .ant-input-password .ant-input:hover,
+body.dark-mode .ant-input-number:hover,
+body.dark-mode .ant-picker:hover {
+  border-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-input:focus,
+body.dark-mode .ant-input-password .ant-input:focus,
+body.dark-mode .ant-input-number:focus,
+body.dark-mode .ant-picker-focused {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2) !important;
+}
+
+/* Select - Dark Mode */
+body.dark-mode .ant-select-selector {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-select-selection-placeholder {
+  color: var(--text-muted) !important;
+}
+
+body.dark-mode .ant-select-selection-item {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-select-arrow {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-select-dropdown {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-select-item {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-select-item-option-selected {
+  background-color: rgba(24, 144, 255, 0.2) !important;
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-select-item-option-active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .ant-select-item-option-content {
+  color: var(--text-primary) !important;
+}
+
+/* TextArea - Dark Mode */
+body.dark-mode .ant-input {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Remove all white backgrounds in dark mode - Comprehensive fix */
+body.dark-mode .ant-input-affix-wrapper,
+body.dark-mode .ant-input-group-wrapper,
+body.dark-mode .ant-input-group {
+  background-color: var(--bg-secondary) !important;
+}
+
+body.dark-mode .ant-select-selection-search-input {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-picker-input input {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+/* Table filter dropdown - Enhanced for dark mode */
+body.dark-mode .ant-table-filter-dropdown {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-input-affix-wrapper {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-input-affix-wrapper .ant-input {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-checkbox-wrapper {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-btn-link {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-table-filter-dropdown .ant-btn-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Modal - Dark Mode */
+body.dark-mode .ant-modal-content {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-modal-header {
+  background-color: var(--bg-card) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-modal-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-modal-close {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-modal-close:hover {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-modal-body {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-modal-footer {
+  border-top-color: var(--border-color) !important;
+}
+
+/* Button - Dark Mode */
+body.dark-mode .ant-btn {
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-btn-default {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-btn-default:hover {
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-btn-link {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-btn-link:hover {
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-btn-text {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-btn-text:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Card - Dark Mode */
+body.dark-mode .ant-card {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-card-head {
+  border-bottom-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-card-head-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-card-body {
+  color: var(--text-primary) !important;
+}
+
+/* Table - Dark Mode (Enhanced) */
+body.dark-mode .ant-table {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-thead>tr>th {
+  background-color: var(--bg-secondary) !important;
+  border-bottom-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-tbody>tr>td {
+  border-bottom-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-table-tbody>tr:hover>td {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark-mode .ant-table-tbody>tr.ant-table-row-selected>td {
+  background-color: rgba(24, 144, 255, 0.15) !important;
+}
+
+/* Form - Dark Mode */
+body.dark-mode .ant-form-item-label>label {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-form-item-explain-error {
+  color: #ff4d4f !important;
+}
+
+body.dark-mode .ant-form-item-explain-success {
+  color: #52c41a !important;
+}
+
+/* Descriptions - Dark Mode */
+body.dark-mode .ant-descriptions-item-label {
+  color: var(--text-secondary) !important;
+  background-color: var(--bg-secondary) !important;
+}
+
+body.dark-mode .ant-descriptions-item-content {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-descriptions-bordered .ant-descriptions-item-label {
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-descriptions-bordered .ant-descriptions-item-content {
+  border-color: var(--border-color) !important;
+}
+
+/* Steps - Dark Mode */
+body.dark-mode .ant-steps-item-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-steps-item-description {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-steps-item-icon {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-steps-item-process .ant-steps-item-icon {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Tag - Dark Mode */
+body.dark-mode .ant-tag {
+  border-color: var(--border-color) !important;
+}
+
+/* Alert - Dark Mode */
+body.dark-mode .ant-alert {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-alert-message {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-alert-description {
+  color: var(--text-secondary) !important;
+}
+
+/* Typography - Dark Mode */
+body.dark-mode .ant-typography {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode h1.ant-typography,
+body.dark-mode h2.ant-typography,
+body.dark-mode h3.ant-typography,
+body.dark-mode h4.ant-typography,
+body.dark-mode h5.ant-typography,
+body.dark-mode h6.ant-typography {
+  color: var(--text-primary) !important;
+}
+
+/* All h1, h2, h3, h4, h5, h6 in dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-typography code {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Divider - Dark Mode */
+body.dark-mode .ant-divider {
+  border-color: var(--border-color) !important;
+}
+
+/* Space - Dark Mode (for spacing elements) */
+body.dark-mode .ant-space-item {
+  color: var(--text-primary) !important;
+}
+
+/* Icon Colors - Dark Mode */
+body.dark-mode .anticon {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-btn .anticon,
+body.dark-mode .ant-btn-link .anticon {
+  color: inherit !important;
+}
+
+/* Pagination - Dark Mode */
+body.dark-mode .ant-pagination-item {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-pagination-item a {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-pagination-item:hover {
+  border-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-pagination-item:hover a {
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-pagination-item-active {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-pagination-item-active a {
+  color: #fff !important;
+}
+
+body.dark-mode .ant-pagination-prev,
+body.dark-mode .ant-pagination-next {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-pagination-prev:hover,
+body.dark-mode .ant-pagination-next:hover {
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-pagination-options {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-select-selector {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Tooltip - Dark Mode */
+body.dark-mode .ant-tooltip-inner {
+  background-color: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* Popconfirm - Dark Mode */
+body.dark-mode .ant-popover-inner {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-popover-inner-content {
+  color: var(--text-primary) !important;
+}
+
+/* Checkbox - Dark Mode */
+body.dark-mode .ant-checkbox-inner {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-checkbox-wrapper {
+  color: var(--text-primary) !important;
+}
+
+/* Radio - Dark Mode */
+body.dark-mode .ant-radio-inner {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-radio-checked .ant-radio-inner {
+  border-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-radio-wrapper {
+  color: var(--text-primary) !important;
+}
+
+/* Switch - Dark Mode */
+body.dark-mode .ant-switch {
+  background-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-switch-checked {
+  background-color: var(--primary-color) !important;
+}
+
+/* Tabs - Dark Mode */
+body.dark-mode .ant-tabs-tab {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-tabs-tab-active {
+  color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-tabs-ink-bar {
+  background: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-tabs-content-holder {
+  color: var(--text-primary) !important;
+}
+
+/* Upload - Dark Mode */
+body.dark-mode .ant-upload {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-upload-drag {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Empty - Dark Mode */
+body.dark-mode .ant-empty-description {
+  color: var(--text-muted) !important;
+}
+
+/* Spin - Dark Mode */
+body.dark-mode .ant-spin-dot-item {
+  background-color: var(--primary-color) !important;
+}
+
+/* Badge - Dark Mode */
+body.dark-mode .ant-badge-status-text {
+  color: var(--text-primary) !important;
+}
+
+/* Avatar - Dark Mode */
+body.dark-mode .ant-avatar {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Breadcrumb - Dark Mode */
+body.dark-mode .ant-breadcrumb-link {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-breadcrumb-link:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Dropdown - Dark Mode */
+body.dark-mode .ant-dropdown-menu {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-dropdown-menu-item {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-dropdown-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .ant-dropdown-menu-item-selected {
+  background-color: rgba(24, 144, 255, 0.2) !important;
+  color: var(--primary-color) !important;
+}
+
+/* Menu - Dark Mode (for dropdown menus) */
+body.dark-mode .ant-menu {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-menu-item {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-menu-item-selected {
+  background-color: rgba(24, 144, 255, 0.2) !important;
+  color: var(--primary-color) !important;
+}
+
+/* Drawer - Dark Mode */
+body.dark-mode .ant-drawer-content {
+  background-color: #1a1a1a !important;
+}
+
+body.dark-mode .ant-drawer-header {
+  background-color: #1a1a1a !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-drawer-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-drawer-body {
+  color: var(--text-primary) !important;
+  background-color: #1a1a1a !important;
+}
+
+/* Drawer - Light Mode - Match desktop sidebar gradient */
+.ant-drawer-content-wrapper {
+  background: transparent !important;
+}
+
+.ant-drawer-content {
+  background: var(--bg-sidebar) !important;
+}
+
+/* Dark Mode - Drawer content */
+body.dark-mode .ant-drawer-content {
+  background: var(--bg-sidebar) !important;
+  background-color: var(--bg-sidebar) !important;
+}
+
+/* Light drawer class */
+.light-drawer .ant-drawer-content {
+  background: var(--bg-sidebar) !important;
+}
+
+/* Dark drawer class */
+.dark-drawer .ant-drawer-content {
+  background: var(--bg-sidebar) !important;
+  background-color: var(--bg-sidebar) !important;
+}
+
+/* Mobile drawer should match desktop sidebar */
+.ant-drawer-body {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Dark Mode - Drawer body */
+body.dark-mode .ant-drawer-body {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Ensure drawer mask doesn't interfere */
+.ant-drawer-mask {
+  background-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Force all drawer wrapper elements */
+.ant-drawer-content-wrapper .ant-drawer-content,
+.ant-drawer-content-wrapper .ant-drawer-content .ant-drawer-wrapper-body {
+  background: var(--bg-sidebar) !important;
+}
+
+body.dark-mode .ant-drawer-content-wrapper .ant-drawer-content,
+body.dark-mode .ant-drawer-content-wrapper .ant-drawer-content .ant-drawer-wrapper-body {
+  background: var(--bg-sidebar) !important;
+  background-color: var(--bg-sidebar) !important;
+}
+
+/* Message - Dark Mode */
+body.dark-mode .ant-message-notice-content {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Notification - Dark Mode */
+body.dark-mode .ant-notification-notice {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-notification-notice-message {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-notification-notice-description {
+  color: var(--text-secondary) !important;
+}
+
+/* Progress - Dark Mode */
+body.dark-mode .ant-progress-text {
+  color: var(--text-primary) !important;
+}
+
+/* Rate - Dark Mode */
+body.dark-mode .ant-rate-star {
+  color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-rate-star-full .ant-rate-star-first,
+body.dark-mode .ant-rate-star-full .ant-rate-star-second {
+  color: #faad14 !important;
+}
+
+/* Slider - Dark Mode */
+body.dark-mode .ant-slider-rail {
+  background-color: var(--bg-secondary) !important;
+}
+
+body.dark-mode .ant-slider-track {
+  background-color: var(--primary-color) !important;
+}
+
+body.dark-mode .ant-slider-handle {
+  background-color: var(--bg-card) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Timeline - Dark Mode */
+body.dark-mode .ant-timeline-item-head {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-timeline-item-content {
+  color: var(--text-primary) !important;
+}
+
+/* Transfer - Dark Mode */
+body.dark-mode .ant-transfer-list {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-transfer-list-header {
+  background-color: var(--bg-secondary) !important;
+  border-bottom-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Tree - Dark Mode */
+body.dark-mode .ant-tree-node-content-wrapper {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-tree-node-content-wrapper:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* TreeSelect - Dark Mode */
+body.dark-mode .ant-select-tree {
+  background-color: var(--bg-card) !important;
+}
+
+body.dark-mode .ant-select-tree-node-content-wrapper {
+  color: var(--text-primary) !important;
+}
+
+/* Cascader - Dark Mode */
+body.dark-mode .ant-cascader-menu {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-cascader-menu-item {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-cascader-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* DatePicker - Dark Mode */
+body.dark-mode .ant-picker-dropdown {
+  background-color: var(--bg-card) !important;
+}
+
+body.dark-mode .ant-picker-panel {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-picker-cell {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-picker-cell:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.dark-mode .ant-picker-cell-selected {
+  background-color: rgba(24, 144, 255, 0.2) !important;
+}
+
+/* TimePicker - Dark Mode */
+body.dark-mode .ant-picker-time-panel-column>li {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-picker-time-panel-column>li:hover {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Statistic - Dark Mode */
+body.dark-mode .ant-statistic-title {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-statistic-content {
+  color: var(--text-primary) !important;
+}
+
+/* Anchor - Dark Mode */
+body.dark-mode .ant-anchor-link-title {
+  color: var(--text-secondary) !important;
+}
+
+body.dark-mode .ant-anchor-link-active>.ant-anchor-link-title {
+  color: var(--primary-color) !important;
+}
+
+/* BackTop - Dark Mode */
+body.dark-mode .ant-back-top {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Collapse - Dark Mode */
+body.dark-mode .ant-collapse {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-collapse-item {
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-collapse-header {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-collapse-content {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Skeleton - Dark Mode */
+body.dark-mode .ant-skeleton-content .ant-skeleton-title,
+body.dark-mode .ant-skeleton-content .ant-skeleton-paragraph>li {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Anchor - Dark Mode */
+body.dark-mode .ant-anchor-ink::before {
+  background-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-anchor-ink-ball {
+  background-color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* Comment - Dark Mode */
+body.dark-mode .ant-comment-content-author-name {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-comment-content-detail {
+  color: var(--text-secondary) !important;
+}
+
+/* List - Dark Mode */
+body.dark-mode .ant-list-item {
+  color: var(--text-primary) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-list-item-meta-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-list-item-meta-description {
+  color: var(--text-secondary) !important;
+}
+
+/* Popover - Dark Mode */
+body.dark-mode .ant-popover-inner {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-popover-inner-content {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-popover-title {
+  color: var(--text-primary) !important;
+  border-bottom-color: var(--border-color) !important;
+}
+
+/* Result - Dark Mode */
+body.dark-mode .ant-result-title {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-result-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+/* Segmented - Dark Mode */
+body.dark-mode .ant-segmented-item {
+  color: var(--text-primary) !important;
+}
+
+body.dark-mode .ant-segmented-item-selected {
+  background-color: var(--primary-color) !important;
+  color: #fff !important;
+}
+
+/* Watermark - Dark Mode */
+body.dark-mode .ant-watermark {
+  color: var(--text-muted) !important;
+}
+
+/* QRCode - Dark Mode */
+body.dark-mode .ant-qrcode {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Tour - Dark Mode */
+body.dark-mode .ant-tour {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-tour-content {
+  color: var(--text-primary) !important;
+}
+
+/* FloatButton - Dark Mode */
+body.dark-mode .ant-float-btn {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* App - Dark Mode */
+body.dark-mode .ant-app {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ConfigProvider - Dark Mode */
+body.dark-mode .ant-config-provider {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ========================================
+   DARK MODE - REMOVE ALL WHITE BACKGROUNDS
+======================================== */
+
+/* Ensure body and root have dark background */
+body.dark-mode body,
+body.dark-mode #root {
+  background-color: var(--bg-primary) !important;
+}
+
+/* Remove all white backgrounds - Enhanced */
+body.dark-mode .ant-empty {
+  color: var(--text-muted) !important;
+  background-color: transparent !important;
+}
+
+body.dark-mode .ant-empty-description {
+  color: var(--text-muted) !important;
+}
+
+body.dark-mode .ant-empty-image {
+  opacity: 0.3;
+}
+
+/* Table Empty State - Dark Mode */
+body.dark-mode .ant-table-placeholder {
+  background-color: transparent !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-table-tbody>tr.ant-table-placeholder>td {
+  background-color: transparent !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .ant-table-tbody>tr.ant-table-placeholder:hover>td {
+  background-color: transparent !important;
+}
+
+body.dark-mode .ant-table-empty .ant-table-tbody>tr>td {
+  background-color: transparent !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Table Empty Container */
+body.dark-mode .ant-table-empty .ant-table-body {
+  background-color: transparent !important;
+}
+
+body.dark-mode .ant-table-empty .ant-table-content {
+  background-color: transparent !important;
+}
+
+body.dark-mode .ant-table-empty .ant-table-container {
+  background-color: transparent !important;
+}
+
+/* Card backgrounds in dark mode */
+body.dark-mode .ant-card {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(26, 31, 46, 0.95) 100%) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Table backgrounds in dark mode */
+body.dark-mode .ant-table-wrapper {
+  background: transparent !important;
+}
+
+body.dark-mode .ant-table {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(26, 31, 46, 0.95) 100%) !important;
+}
+
+/* Modal backgrounds in dark mode */
+body.dark-mode .ant-modal-content {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(26, 31, 46, 0.98) 100%) !important;
+}
+
+/* Input group backgrounds */
+body.dark-mode .ant-input-group-wrapper,
+body.dark-mode .ant-input-group {
+  background: transparent !important;
+}
+
+/* Select dropdown backgrounds */
+body.dark-mode .ant-select-dropdown {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(26, 31, 46, 0.98) 100%) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Picker dropdown backgrounds */
+body.dark-mode .ant-picker-dropdown {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(26, 31, 46, 0.98) 100%) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Cascader dropdown backgrounds */
+body.dark-mode .ant-cascader-picker-dropdown {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(26, 31, 46, 0.98) 100%) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Table filter dropdown backgrounds */
+body.dark-mode .ant-table-filter-dropdown {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(26, 31, 46, 0.98) 100%) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Remove white backgrounds from all form elements */
+body.dark-mode .ant-input-affix-wrapper,
+body.dark-mode .ant-input-group-wrapper,
+body.dark-mode .ant-input-group {
+  background-color: var(--bg-secondary) !important;
+}
+
+body.dark-mode .ant-input-affix-wrapper .ant-input {
+  background-color: transparent !important;
+}
+
+/* Table search inputs in modals */
+body.dark-mode .ant-modal .ant-input-affix-wrapper,
+body.dark-mode .ant-modal .ant-input,
+body.dark-mode .ant-modal .ant-select-selector {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Product selection table in request form */
+body.dark-mode .ant-table-wrapper .ant-input-affix-wrapper,
+body.dark-mode .ant-table-wrapper .ant-input {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* All dropdowns should have dark background */
+body.dark-mode .ant-dropdown-menu,
+body.dark-mode .ant-select-dropdown,
+body.dark-mode .ant-picker-dropdown,
+body.dark-mode .ant-cascader-picker-dropdown,
+body.dark-mode .ant-table-filter-dropdown {
+  background-color: var(--bg-card) !important;
+}
+
+/* Ensure no white backgrounds in any container */
+body.dark-mode .ant-form-item-control-input-content,
+body.dark-mode .ant-form-item-control-input {
+  background-color: transparent !important;
+}
+
+/* Card body should not have white background */
+body.dark-mode .ant-card-body {
+  background-color: transparent !important;
+}
+
+/* Modal body should not have white background */
+body.dark-mode .ant-modal-body {
+  background-color: transparent !important;
+}
